@@ -1,27 +1,25 @@
 import TodoList from "./components/TodoList";
-import CreateTodo from "./components/CreateTodo";
-import {useState} from "react";
+import CreatePost from "./components/CreatePost";
+import {useSelector} from "react-redux";
 
 function App() {
-  const [posts, setPosts] = useState([
-    {title: 'Первый пост', description: 'Описание'}
-  ])
+ /* const addPost = (post) => {
+    setPosts([...posts, post])
+  }
 
-    const createPost = (newPost) => {
-      setPosts([...posts,newPost])
-    }
+  const removePost = (post) => {
+    setPosts(posts.filter(item => item.id !== post.id))
+  }*/
 
-    const removePost = (post) => {
-      setPosts(posts.filter(item => item.id !== post.id))
-    }
+  const posts = useSelector(state => state.posts); // Получаем state из redux
 
 
   return (
     <div className="App">
       <h1>Список задач</h1>
       <div className="wrapper">
-        <TodoList posts={posts} removePost={removePost}/>
-        <CreateTodo createPost={createPost}/>
+        <TodoList posts={posts} />
+        <CreatePost/>
       </div>
     </div>
   );
