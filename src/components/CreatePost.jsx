@@ -24,12 +24,14 @@ const CreatePost = () => {
                 type="text"
                 placeholder="Название"
                 value={post.title}
+                className="input"
                 onChange={e => setPost({...post, title: e.target.value})}
             />
             <MyInput
                 type="text"
                 placeholder="Описание"
                 value={post.description}
+                className="input"
                 onChange={e => setPost({...post, description: e.target.value})}
             />
             <button className="btn" onClick={() => createPost()}>Создать</button>
