@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom';
 import App from "./App";
 import './style/style.css'
 import {Provider} from "react-redux";
-import {createStore} from "redux";
-import todoReducer from "./store/reducers/todoReducer";
+import {applyMiddleware, createStore} from "redux";
+import {BrowserRouter} from 'react-router-dom'
+import {rootReducer} from "./store/reducers";
+import thunk from 'redux-thunk'
 
-
-const store = createStore(todoReducer);
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App/>
-    </Provider>,
+    <BrowserRouter>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
